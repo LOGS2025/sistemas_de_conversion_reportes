@@ -1,0 +1,622 @@
+\documentclass[12pt,letterpaper]{article}
+
+% --- Paquetes ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage{helvet}      % Fuente sans-serif para un look más limpio
+\renewcommand{\familydefault}{\sfdefault}
+
+% --- Datos de la portada ---
+\newcommand{\institucion}{Universidad Nacional Autónoma de México}
+\newcommand{\facultad}{Facultad de Ingeniería}
+\newcommand{\numpractica}{Práctica 2}
+\newcommand{\semestre}{Semestre 2027-1}
+\newcommand{\entrega}{17 de septiembre de 2026}
+\newcommand{\grupo}{Grupo: 16}
+\newcommand{\alumno}{López Guevara Sebastián}
+\newcommand{\profesora}{Sonia López Maldonado}
+\newcommand{\practica}{Calderas y calorimetría}
+\newcommand{\materia}{SISTEMAS DE CONVERSIÓN DE ENERGÍA TÉRMICA}
+
+\begin{document}
+\thispagestyle{empty}
+
+\begin{center}
+
+    % --- INSTITUCIÓN ---
+    {\Large\bfseries \institucion}\\[0.3cm]
+    {\Large\bfseries \facultad}\\[0.3cm]
+    {\large \semestre}\\[0.2cm]
+    {\large \grupo}\\[1.5cm]
+    
+    % --- LOGO (opcional) ---
+    % \includegraphics[width=0.25\textwidth]{logo.png}\\[1.5cm]
+    
+    % --- TÍTULO DE LA PRÁCTICA ---
+    {\large \numpractica}\\[0.2cm]
+    {\Huge\bfseries \practica}\\[0.5cm]
+    \rule{0.8\textwidth}{0.4pt}\\[1.5cm]
+
+    % --- DATOS DEL ALUMNO Y PROFESORA ---
+    \begin{tabular}{rl}
+        \textbf{Alumno:}     & \alumno     \\[0.3cm]
+        \textbf{Profesora:}  & \profesora  \\[0.3cm]
+        \textbf{Materia:}    & \materia    \\
+    \end{tabular}
+
+    \vfill
+    
+    % --- FECHA ---
+    {\entrega}
+    
+\end{center}
+
+\break
+
+% ============================
+% OBJETIVO
+% ============================
+\section{Objetivo}
+Conocer la capacidad nominal, capacidad real, factor de sobrecarga, factor de vaporización,
+eficiencia y calidad del vapor
+por medio de mediciones realizadas a un generador en operación y analizarlas para
+poder afirmar la exactitud de tales mediciones con datos numéricos.
+
+% MATERIAL
+% ============================
+\section{Material}
+\begin{itemize}
+    \item Termómetro de 150 °C
+    \item Termómetro de 250 °C
+    \item Flexómetro
+    \item Cronómetro
+    \item 3 Cubetas
+\end{itemize}
+
+% ============================
+% DESARROLLO
+% ============================
+\section{Desarrollo}
+\begin{enumerate}
+    \item Se midió la temperatura de entrada del agua de alimentación.
+    \item Se tomó como dato la superficie de calefacción de la caldera.
+    \item Se colocó el termómetro de 150 grados en el calorímetro de estrangulamiento al costado de 
+    la caldera. Se dejó estabilizarse y mientras se continuó al calorímetro eléctrico.
+    \item Se encendió la resistencia del calorímetro eléctrico y se colocaron cubetas bajo la llave.
+    \item Se colocó el termómetro de 250 grados en el calorímetro eléctrico.
+    \item Se realizaron las lecturas del voltaje e intensidad 
+    de corriente del calorímetro eléctrico.
+    \item Se esperó a que se calentara el agua.
+    \item Se realizó la medición de la temperatura del calorímetro de estrangulamiento.
+    \item Una vez el agua ascendió hasta la temperatura $T_3$, se colocó una cubeta vacía y
+    se tomó el tiempo con un cronómetro.
+    \item Al pasar 30 segundos aproximadamente se retiró la cubeta y se pesó.
+    \item Se vació la cubeta y se pesó nuevamente.
+    \item Se tomaron las medidas del volumen para el gasto de combustible.
+\end{enumerate}
+
+\vfill
+
+% ============================
+% TABLA DE DATOS
+% ============================
+\section{Tabla de datos}
+
+\begin{table}[H] \label{tab:data}
+\centering
+\renewcommand{\arraystretch}{1.4}
+    \begin{tabular}{|l|l|}
+    \hline
+    \textbf{Medición} & \textbf{Variable} \\
+    \hline
+    $6.4\ [{kg/cm}^2]$   & $P_2$ \\
+    \hline
+    $46.61\ [{m}^2]$     & Sup. Calef \\
+    \hline
+    $32\ [^\circ{C}]$    & $T_1$ \\
+    \hline
+    $30\ [{cm}]$ & $a$ \\
+    \hline
+    $30\ [{cm}]$ & $a$ \\
+    \hline
+    $5\ [{cm}]$  & $A$ \\
+    \hline
+    $2\ [min] + 57\ [s]$  & $t$ \\
+    \hline
+    $120\ [^\circ{C}]$   & $T_3$ \\
+    \hline
+    $106\ [{V}]$         & $V$ \\
+    \hline
+    $15.5\ [{A}]$        & $I$ \\
+    \hline
+    $2.5\ [{kg/cm}^2]$   & $P_4$ \\
+    \hline
+    $159\ [^\circ{C}]$   & $T_4$ \\
+    \hline
+    $850\ [{g}]$         & $m_{vc}$ \\
+    \hline
+    $300\ [{g}]$         & $m_{cu}$ \\
+    \hline
+    $30\ [{s}]$          & $t$ \\
+    \hline
+    \end{tabular}
+\caption{Datos experimentales obtenidos durante la práctica.}
+\end{table}
+
+% ============================
+% CÁLCULOS
+% ============================
+\section{Cálculos}
+
+\subsection{Obtención de las propiedades termodinámicas del estado I} \label{entalpia_I}
+Conocemos la temperatura de entrada y por lo tanto realizamos:
+
+\begin{equation} \label{eq:cp_equation}
+    h_{1}=C_p (T_1 - 0)
+\end{equation}
+
+Sustituyendo la temperatura uno registrada
+
+$$
+    h_{1}=C_p (32[ ^\circ C] - 0)  
+$$
+
+Sabemos que el $C_p$ del agua tiene un valor de $4.186[\frac{kJ}{kg ^\circ C}]$. 
+Resolviendo la ecuación \ref{eq:cp_equation}
+
+$$
+    h_1 = 4.186[\frac{kJ}{kg\cdot K}] \cdot (32+273.15-273.15)[K]
+$$
+
+$$
+    h_1 = 133.952 [\frac{kJ}{kg}]
+$$
+
+\subsection{Obtención de las propiedades termodinámicas del estado II} \label{stateII}
+
+En esta sección se encuentran los datos correspondientes al estado 2.
+Para entrar a tablas se utiliza $P_2 = 6.4[\frac{kg}{cm^2}]$. 
+Convertimos este a $P_2$ a $627.6256[kPa]$. 
+Luego obtenemos la presión de la caldera absoluta 
+$$
+    P_{abs} = 78.51[kPa] + 627.6256[kPa] = 706.1356[kPa]
+$$
+
+Buscamos $h_f$ y $h_{fg}$ en tablas:
+$$
+    h_{g} = 2763.12 \left[\frac{kJ}{kg}\right]
+$$
+$$
+    h_{f} = 698.53 \left[\frac{kJ}{kg}\right]
+$$
+
+\subsection{Obtención de las propiedades termodinámicas del estado III 
+                y la calidad del estado II} \label{x_calorimetro_estrangulamiento}
+
+Esta medición corresponde al calorímetro de estrangulamiento. Los datos que se usarán son
+
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\raggedleft\arraybackslash}X | }
+ \hline
+ $P_3$ & $785.1[hPa]$  \\
+ \hline
+ $T_3$ & $120[^\circ C]$  \\
+\hline
+\end{tabularx}
+
+La presión fue obtenida a partir del \href{http://189.254.33.151/stn/coyoacan/Current_Monitor.htm}{monitor meteorológico de Coyoacán}.
+
+Convertimos esta a $[kPa]$ y obtenemos $78.51[kPa]$.
+
+Entramos a tablas con estos valores para el estado 3 para obtener $h_3$:
+
+$$
+    h_3 = h_2 = 2718838.42 \left[\frac{J}{kg}\right] = 2718.83 \left[\frac{kJ}{kg}\right]
+$$
+
+Para encontrar la calidad del agua que se encuentra como mezcla dentro de la caldera en el estado 2, 
+buscaremos a la calidad con ayuda de las propiedades del estado III.
+
+Utilizaremos la ecuación 
+\begin{equation} \label{eq:calidad}
+    x = \frac{h_2-h_f}{h_{fg}}
+\end{equation}
+
+Nos apoyamos de la entalpía del estado 3, ya que el proceso 2-3 es un proceso
+isentálpico, para sustituir en la ecuación \ref{eq:calidad}.
+
+$$
+    x = \frac{
+        2718.83842 \left[\frac{kJ}{kg}\right] - 698.53 \left[\frac{kJ}{kg}\right] }{
+            2763.12 \left[\frac{kJ}{kg}\right] - 698.53 \left[\frac{kJ}{kg}\right]
+        } = 0.97855
+$$
+
+\subsection{Obtención de las propiedades termodinámicas del estado IV y 
+            la calidad del estado II} \label{x_calorimetro_electrico}
+
+Estas propiedades corresponden al estado 4. Las mediciones fueron tomadas del calorímetro
+eléctrico.
+
+Para poder sustituir dentro de la ecuación
+
+\begin{equation} \label{eq:calorimetro_electrico}
+    h_2 = h_4 - \frac{VI}{ \dot{M_{vc}}}    
+\end{equation}
+
+se usarán los datos
+
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\raggedleft\arraybackslash}X | }
+ \hline
+ $V$ & $106[V]$  \\
+ \hline
+ $I$ & $15.5[A]$  \\
+ \hline
+ $M_{vc}$ & $850[g]$  \\
+ \hline
+ $M_{cu}$ & $300[g]$  \\
+ \hline
+ $t_{vc}$ & $30[s]$  \\
+ \hline
+ $P_4$ & $2.5\left[\frac{kg}{cm^2} \right]$  \\
+ \hline
+ $T_4$ & $159[^\circ C]$  \\
+\hline
+\end{tabularx}
+
+Convertimos $[g]\to[kg]$ sustituimos las masas medidas y el tiempo para obtener flujo másico
+
+$$
+    \dot{M_{vc}}=\frac{M_{vc}-M_{cu}}{t_{vc}}=\frac{0.850[kg]-0.300[kg]}{30[s]}=0.01833 \left[\frac{kg}{s}\right]
+$$
+
+Buscamos la entalpía del estado 4. Para esto convertimos $P_4$ a $[kPa]$
+
+$$
+    P_4 = 2.5\left[\frac{kg}{cm^2} \right] = 245166.25[Pa] = 245.16625[kPa]
+$$
+
+y encontramos que
+
+$$
+    h4 = 2778.7275470340987 kJ/kg
+$$
+
+Hay que tomar en cuenta que las unidades que resultan de la potencia ($V*I$) son $[J/s]$
+y por lo tanto tenemos que usar estas en la entalpía 4.
+
+$$
+    h_4 = 2778720\left[\frac{J}{kg}\right]
+$$
+
+Sustituyendo nuestros valores en la ecuación \ref{eq:calorimetro_electrico}
+
+$$
+    h_2 = 2778720\left[\frac{kJ}{kg}\right] - \frac{106[V]\cdot 15.5[A]}{0.01833[kg/s]} = 2689085.52\left[J/kg\right] = 2689.085\left[kJ/kg\right]
+$$
+
+Finalmente, para encontrar la calidad se reutiliza la ecuación \ref{eq:calidad}
+$$
+    x = \frac{2689.085\left[kJ/kg\right] - h_{f_2}}{h_{fg_2}}
+$$
+
+Las variables restantes ya se calcularon en la sección \ref{stateII}
+
+$$
+    x = \frac{2689.085\left[\frac{kJ}{kg}\right] - 698.53\left[\frac{kJ}{kg}\right]}
+                {2763.12\left[\frac{kJ}{kg}\right] - 698.53\left[\frac{kJ}{kg}\right]}
+    = 0.9641
+$$
+
+
+% ============================
+% CALCULO DE ETA
+% ============================
+\subsection{Obtención de la eficiencia}
+
+
+% ============================
+% CALCULO DEL GV
+% ============================
+\subsubsection{Cálculo del gasto de vapor} \label{gasto_vapor}
+
+Para obtener el gasto de vapor se utiliza la ecuación del equivalente de vapor, 
+de la cual despejamos el gasto de vapor
+\begin{equation} \label{eq:gasto_vapor}
+    G_v = \frac{E_v\cdot h_{fg}}{h_2 - h_1}
+\end{equation}
+
+Como dato se tiene
+$$E_v = 1050\left[\frac{kg}{h}\right]$$
+$$h_{fg} = 2274.67\left[\frac{kJ}{kg}\right]$$
+
+Sustituyendo en la ecuación \ref{eq:gasto_vapor}
+
+$$
+    G_v = \frac{1050\left[\frac{kg}{h}\right] \cdot 2274.67\left[\frac{kJ}{kg}\right] }
+    {(h_2 - h_1)\left[\frac{kJ}{kg}\right]}
+$$
+
+Para la entalpía se utilizará la calculada a partir de las mediciones tomadas
+del calorímetro eléctrico, obtenida en la sección \ref{x_calorimetro_electrico}. 
+La entalpía 1 fue obtenida en la sección \ref{entalpia_I}
+
+$$
+    G_v = \frac{1050\left[\frac{kg}{h}\right] \cdot 2274.67\left[\frac{kJ}{kg}\right] }
+    {(2689,085 - 133,952)\left[\frac{kJ}{kg}\right]} = 934.74\left[\frac{kg}{h}\right]
+$$
+
+Para dejarlo en término de segundos
+$$
+    G_v = 
+    934.74\left[\frac{kg}{h}\right] \cdot \frac{1[h]}{60[min]}\cdot \frac{1[min]}{60[s]} 
+    = 0.25965\left[\frac{kg}{s}\right]
+$$
+
+% ============================
+% CALCULO DEL GC
+% ============================
+\subsubsection{Cálculo del gasto de combustible}
+
+Para el gasto de combustible se utiliza la ecuación
+
+\begin{equation}
+    G_c = \frac{a\cdot a\cdot A}{t}\times\rho_{comb}
+\end{equation}
+
+Conociendo que $\rho_{comb} = 800\left[\frac{kg}{m^3}\right]$, y de los datos de tablas
+
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\raggedleft\arraybackslash}X | }
+ \hline
+ $a$ & $30[cm]$  \\
+\hline
+ $A$ & $5[cm]$  \\
+\hline
+ $t$ & $2[min], 57[s]$  \\
+\hline
+\end{tabularx}
+
+Convirtiendo las unidades al SI
+
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\raggedleft\arraybackslash}X | }
+ \hline
+ $a$ & $0.30[m]$  \\
+\hline
+ $A$ & $0.05[m]$  \\
+\hline
+ $t$ & $177 [s]$  \\
+\hline
+\end{tabularx}
+
+$$
+    G_c = \frac{0.30[m]\cdot 0.30[m] \cdot 0.05[m]}{177[s]}\times 800\left[\frac{kg}{m^3}\right]
+$$
+
+$$
+    = 0.020338\left[\frac{kg}{s}\right]
+$$
+
+\subsubsection{Cálculo de la eficiencia}
+
+Finalmente sustituimos los valores anteriores en la ecuación
+\begin{equation}
+    \eta = \frac{G_v(h_2 - h_1)}{G_c(PCA)}
+\end{equation}
+
+$$
+    \eta = \frac{
+        0.25965\left[\frac{kg}{s}\right](h_2 - h_1)
+    }{
+        0.020338\left[\frac{kg}{s}\right](PCA)
+    }
+$$
+
+Conociendo $PCA = 42094\left[\frac{kJ}{kg}\right]$ y utilizando los valores de entalpía 
+calculados en las secciones \ref{entalpia_I} y \ref{x_calorimetro_electrico}
+
+$$
+    \eta = \frac{
+        0.25965\left[\frac{kg}{s}\right](2689,085 - 133,952)\left[\frac{kJ}{kg}\right]
+    }{
+        0.020338\left[\frac{kg}{s}\right](42094)\left[\frac{kJ}{kg}\right]
+    } = 0.774949
+$$
+
+\subsection{Obtención de la capacidad nominal y la capacidad real}
+
+Para obtener estas capacidades se utilizan los datos
+
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\raggedleft\arraybackslash}X | }
+ \hline
+ Sup.Calef & $46.61[m^2]$  \\
+\hline
+\end{tabularx}
+
+Sustituyendo en la ecuación
+
+\begin{equation}
+    C_N = \frac{{Sup. Calef}}{0.93\left[\frac{m^2}{CC}\right]}\times 8510\left[\frac{kcal}{h}\right]
+\end{equation}
+
+obtenemos
+
+$$C_N = \frac{
+            46.61[m^2]
+        }{
+            0.93\left[\frac{m^2}{CC}\right]
+        }
+        \times 8510\left[\frac{kcal}{h}\right] = 426506.55\left[\frac{kcal}{h}\right]
+$$
+
+Para convertirlo a $[kJ/s]$ 
+$$
+    C_N = 426506.55\left[\frac{kcal}{h}\right]
+    \times \frac{4.186[kJ]}{1[kcal]} \times \frac{1[h]}{3600[s]} = 495.93\left[\frac{kJ}{s}\right]
+$$
+
+
+Finalmente, la capacidad real se obtiene por medio de
+\begin{equation}
+    C_R = G_v(h_2 - h_1)
+\end{equation}
+
+Y utilizando los datos de las secciones \ref{entalpia_I}, \ref{x_calorimetro_electrico} y el
+gasto de vapor calculado en la sección anterior
+
+$$
+    C_R = 0.25965\left[\frac{kg}{s}\right]
+    (2689.085 - 133.952)\left[\frac{kJ}{kg}\right] = 638.78325 \left[\frac{kJ}{s}\right]
+$$
+
+\subsection{Factor de sobrecarga y factor de vaporización}
+
+El factor de sobrecarga se obtiene por medio de la siguiente ecuación
+
+\begin{equation}
+    F_{sc} = \frac{C_R}{C_N} 
+\end{equation}
+
+y sustituyendo
+
+$$
+    F_{sc} = \frac{638.78325 \left[\frac{kJ}{s}\right]}
+    {495.93\left[\frac{kJ}{s}\right]} = 1.2880
+$$
+
+Por último, el factor de vaporización utiliza la ecuación
+
+\begin{equation}
+    F_v = \frac{E_v}{G_v}
+\end{equation}
+
+Sustituimos el gasto de vapor y el equivalente de vaporización revisados en la sección \ref{gasto_vapor}
+
+$$
+    F_v = \frac{1050\left[\frac{kg}{h}\right]}{934.74\left[\frac{kg}{h}\right]} 
+    = 1.123307
+$$
+
+
+\pagebreak
+
+% ============================
+% TABLA DE RESULTADOS
+% ============================
+\section{Tabla de resultados}
+
+\begin{table}[H] \label{tab:results}
+\centering
+\renewcommand{\arraystretch}{1.4}
+    \begin{tabular}{|l|l|}
+    \hline
+    \textbf{Variable} & \textbf{Resultado} \\
+    $x_1$ & $0.97$ \\
+    \hline
+    $x_2$ & $0.96$ \\
+    \hline
+    $\eta$ & $77.49\%$ \\
+    \hline
+    $C_N$ & $495.93\left[\frac{kJ}{s}\right]$ \\
+    \hline
+    $C_R$ & $638.78\left[\frac{kJ}{s}\right]$ \\
+    \hline
+    $F_{sc}$ & $1.28$ \\
+    \hline
+    $F_{v}$ & $1.12$ \\
+    \hline
+    \end{tabular}
+\caption{Resultados obtenidos.}
+\end{table}
+
+% ============================
+% ANÁLISIS, CONCLUSIONES Y BIBLIOGRAFÍA
+% ============================
+\section{Análisis de resultados}
+
+A partir de los primeros dos cálculos de la calidad del vapor de la caldera se obtiene
+una diferencia aproximada de $0.014411$. Esta es una diferencia despreciable y podemos observar que ambos
+calorímetros convergen a un valor aun al ser diferentes métodos de medición.\linebreak
+
+La eficiencia, de acuerdo a 
+\href{https://coalbiomassboiler.com/industrial-steam-boiler-efficiency/}{la eficiencia de una caldera industrial},
+se acerca bastante al estándar de $80\%$. 
+Los errores de medición son aceptables pero pueden eliminarse, como la lectura de las temperaturas
+en los termómetros, que se utilizaron para el cálculo de la entalpía 1 y para entrar a
+tablas, así como el tiempo aproximado tomado con el cronómetro, contribuyen a este error. 
+Además, no tenemos información sobre el mantenimiento que recibe el equipo.\linebreak
+
+Por otro lado, la capacidad real supera por mucho a la capacidad nominal, 
+lo que indica otro error en las mediciones. El factor de sobrecarga muestra un incremento del
+$28\%$ con respecto a la capacidad nominal. Esto significa que la 
+caldera está operando por encima de su punto de diseño. Con respecto al factor de vaporización, 
+se muestra una proporción
+a favor del equivalente de vaporización del $12\%$.
+
+\section{Conclusiones}
+
+Se determinó la calidad del vapor de la caldera por dos métodos independientes:
+el calorímetro de estrangulamiento ($x_1 = 0.9786$) y el calorímetro eléctrico
+($x_2 = 0.9641$). La diferencia entre ambos (1.5\%) es atribuible a las pérdidas
+de calor en la resistencia eléctrica y a la suposición de proceso isentálpico
+en el estrangulamiento. La calidad promedio ($x = 0.971$) indica un vapor con
+aproximadamente 3\% de humedad, aceptable para aplicaciones de calefacción pero
+insuficiente para turbinas de vapor.
+
+La eficiencia calculada ($\eta = 77.49\%$) es consistente con el rango típico
+de calderas de laboratorio (70--80\%), aunque ligeramente por debajo del estándar
+industrial de 80\%. Las principales fuentes de error son la lectura de temperaturas
+en los termómetros ($\pm 1^\circ$C), el tiempo medido con cronómetro ($\pm 0.5$ s)
+y la posible pérdida de calor en el calorímetro eléctrico.
+
+El factor de sobrecarga ($F_{sc} = 1.28$) indica que la caldera opera 28\% por
+encima de su capacidad nominal, lo que podría deberse a una sobreestimación del
+gasto de vapor o a una subestimación de la capacidad nominal. El factor de
+vaporización ($F_v = 1.12$) es cercano a 1, lo que indica que el
+equivalente de vaporización real es 12\% mayor que el nominal.
+
+\section{Bibliografía}
+
+\begin{itemize}
+    \item Bell, I. H., Wronski, J., Quoilin, S., \& Lemort, V. (2014). 
+    Pure and pseudo-pure fluid thermophysical property evaluation and 
+    the open-source thermophysical property library CoolProp. 
+    \textit{Industrial \& Engineering Chemistry Research}, 53(6), 
+    2498--2508. \url{https://doi.org/10.1021/ie4033999}
+    
+    \item Cengel, Y. A., \& Boles, M. A. (2015). 
+    \textit{Termodinámica} (8a ed.). McGraw-Hill Education.
+    
+    \item Coalmass Boiler. (2024). \textit{Industrial Steam Boiler Efficiency}. 
+    Recuperado de 
+    \url{https://coalbiomassboiler.com/industrial-steam-boiler-efficiency/}
+    
+    \item López Maldonado, S. (2026). \textit{Hoja de calculos calderas.ppt} [Material de curso]. 
+    Facultad de Ingeniería, Universidad Nacional Autónoma de México.
+    
+    \item Python Software Foundation. (2024). \textit{Python Language 
+    Reference, version 3.12}. \url{https://docs.python.org/3/}
+\end{itemize}
+
+\end{document}

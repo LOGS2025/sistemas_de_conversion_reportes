@@ -1,0 +1,380 @@
+\documentclass[12pt,letterpaper]{article}
+
+% --- Paquetes ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage{helvet}      % Fuente sans-serif para un look más limpio
+\renewcommand{\familydefault}{\sfdefault}
+
+% --- Datos de la portada ---
+\newcommand{\institucion}{Universidad Nacional Autónoma de México}
+\newcommand{\facultad}{Facultad de Ingeniería}
+\newcommand{\numpractica}{Práctica 3}
+\newcommand{\semestre}{Semestre 2027-1}
+\newcommand{\entrega}{24 de septiembre de 2026}
+\newcommand{\grupo}{Grupo: 16}
+\newcommand{\alumno}{López Guevara Sebastián}
+\newcommand{\profesora}{Sonia López Maldonado}
+\newcommand{\practica}{Ciclo Rankine}
+\newcommand{\materia}{SISTEMAS DE CONVERSIÓN DE ENERGÍA TÉRMICA}
+
+\begin{document}
+\thispagestyle{empty}
+
+\begin{center}
+
+    % --- INSTITUCIÓN ---
+    {\Large\bfseries \institucion}\\[0.3cm]
+    {\Large\bfseries \facultad}\\[0.3cm]
+    {\large \semestre}\\[0.2cm]
+    {\large \grupo}\\[1.5cm]
+    
+    % --- LOGO (opcional) ---
+    % \includegraphics[width=0.25\textwidth]{logo.png}\\[1.5cm]
+    
+    % --- TÍTULO DE LA PRÁCTICA ---
+    {\large \numpractica}\\[0.2cm]
+    {\Huge\bfseries \practica}\\[0.5cm]
+    \rule{0.8\textwidth}{0.4pt}\\[1.5cm]
+
+    % --- DATOS DEL ALUMNO Y PROFESORA ---
+    \begin{tabular}{rl}
+        \textbf{Alumno:}     & \alumno     \\[0.3cm]
+        \textbf{Profesora:}  & \profesora  \\[0.3cm]
+        \textbf{Materia:}    & \materia    \\
+    \end{tabular}
+
+    \vfill
+    
+    % --- FECHA ---
+    {\entrega}
+    
+\end{center}
+
+\break
+
+\section{Objetivos}
+
+Obtener numericamente a partir de mediciones realizadas a un generador
+de ciclo rankine en operacion las eficiencias interna, mecanica y total de la turbina, y las
+eficiencias teorica y termica del ciclo completo. Esto utilizando los datos ya calculados 
+para medir la calidad del vapor a la salida de la caldera.
+
+\section{Materiales}
+
+\begin{itemize}
+    \item 1 Termometro 150 $^\circ C$
+    \item 1 Termometro 100 $^\circ C$
+    \item 1 Tacometro
+    \item 1 Cronometro
+    \item 3 Cubetas
+\end{itemize}
+
+\section{Desarrollo}
+
+\begin{enumerate}
+    % Etapa: 
+    \item Identificar manometros y pozos para termometros
+    % Etapa: 
+    \item Identificar medidor de corriente y voltaje
+    \item Primero se dejo pasar vapor hacia la turbina y se fue calibrando con el reostato
+    \item Al llegar aproximadamente a los 120 volts, se tomo la medida de la corriente y del voltaje
+    \item Al mismo tiempo, se recolecto el agua que salia del pozo para evitar que se tirara
+    \item Se dejo llenar una cubeta durante 1 minuto. Se peso y luego se vacio para 
+    obtener el peso del condensado. 
+
+% Presiones
+
+    % Etapa: 1 -> Entrada a la valvula | Salida del tanque de condensado (cabezal)
+    \item Se tomo la lectura del manometro de la valvula 
+    % Etapa: 2 -> Entrada a la turbina
+    \item Se tomo la lectura del manometro a la entrada de la turbina
+    % Etapa: 3 -> Salida de la turbina
+    \item Se tomo la lectura del manometro a la salida de la turbina
+
+% Temperaturas
+
+    % Etapa: 3 -> Salida de la turbina
+    \item Se tomo la lectura del termometro a la salida de la turbina
+    % Etapa: 4 -> Salida del condensado
+    \item Se tomo la lectura del termometro a la salida del condensador
+    % Etapa: 5 -> Temperatura del tanque del condensado
+    \item Se tomo la lectura del termometro dentro del tanque de condensado
+
+\end{enumerate}
+
+\section{Tabla de datos}
+
+\begin{table}[H] \label{tab:data}
+\centering
+\renewcommand{\arraystretch}{1.4}
+    \begin{tabular}{|l|l|}
+    \hline
+    \textbf{Medición} & \textbf{Variable} \\
+    \hline
+    $11.0\ [V]$  & $V$ \\
+    \hline
+    $61.3\ [A]$  & $A$ \\
+    \hline
+    $6.5\ \left[\frac{kg}{cm^2}\right]$  
+                 & $P_1$ \\
+    \hline
+    $6\ \left[\frac{kg}{cm^2}\right]$  
+                 & $P_2$ \\
+    \hline
+    $20\ [cm Hg]$  & $P_3$ \\
+    \hline
+    $73\ [^\circ C]$  & $T_3$ \\
+    \hline
+    $31\ [^\circ C]$  & $T_4$ \\
+    \hline
+    $36\ [^\circ C]$  & $T_5$ \\
+    \hline
+    $5.5\ [kg]$  & $M_{cond}$ \\
+    \hline
+    $300\ [g]$  & $M_{cub}$ \\
+    \hline
+    $1\ [min]$  & $t$ \\
+    \hline
+    \end{tabular}
+\caption{Datos experimentales obtenidos durante la práctica.}
+\end{table}
+
+\section{Cálculos}
+
+A continuacion se muestran los calculos realizados para obtener las metricas propuestas en
+los objetivos.
+
+Los valores encontrados en tablas se obtuvieron a partir de un script en python con
+ayuda de la paqueteria CoolProp. Esto favorece la precision y rapidez para obtener dichos datos.
+
+\subsection{Obtencion de las propiedades del estado I} \label{sec:estadoI}
+
+Establecemos a la presion atmosferica con un valor de 
+$78.51[kPa]$. Y utilizando los valos pertenecientes al estado 1 de la tabla de datos,
+obtenemos la presion absoluta.
+
+Realizando la conversion a $[Pa]$
+
+$$P_1 = 6.5\left[\frac{kg}{cm^2}\right] 
+\cdot 
+\frac{98066.5[Pa]}{1\left[\frac{kg}{cm^2}\right]}=637432.25[Pa]=637.43225[kPa]
+$$
+
+$$P_{1_{abs}} = 637.43225[kPa] + 78.51[kPa] = 715.94225[kPa]$$
+
+Y para entrar a tablas, tenemos el dato de la calidad del vapor a la salida de la caldera ($x=0.97$).
+
+La entalpia del estado 1 es
+$$
+    h_1 =  2701.8194 \left[\frac{kJ}{kg}\right]
+$$
+
+\subsection{Obtencion de las propiedades del estado II} \label{sec:estadoII}
+
+Despues de que el vapor sale de la caldera, y pasa por el cabezal, llega a la valvula "de paso?".
+
+Al ser un proceso isentalpico, le asignamos la misma entalpia que a nuestro estado 1.
+
+$$
+    h_2 =  2701.8194 \left[\frac{kJ}{kg}\right]
+$$
+
+Para el siguiente estado necesitamos de la entropia. Para poder obtener este valor de tablas, 
+convertimos la presion del estado 2 a $[kPa]$.
+
+$$P_2 = 6\left[\frac{kg}{cm^2}\right] 
+\cdot 
+\frac{98066.5[Pa]}{1\left[\frac{kg}{cm^2}\right]}=588399.0[Pa]=588.399[kPa]
+$$
+
+Obtenemos la presion absoluta
+
+$$P_{2_{abs}} = 588.399[kPa] + 78.51[kPa] = 666.909[kPa]$$
+
+y entrando a tablas con los valores de entalpia y presion obtenemos
+
+$$
+    s_2 = 6.58849418722697  \left[\frac{kJ}{kg\ K}\right]
+$$
+
+\subsection{Obtencion de las propiedades del estado III} \label{sec:estadoIII}
+
+Sabemos que el proceso termodinamico que ocurre en la turbina es isentropico idealmente.
+Para este primer calculo de $h_{3_{isen}}$, 
+
+\subsubsection{Calculo de la entalpia teorica}
+
+Igualamos entropias
+
+$$
+    s_3 = s_2
+$$
+
+y convertimos el dato de presion vacuometrica del estado 3 a presion absoluta
+
+$$
+    P_3 = 20[cm\ Hg] \cdot \frac{1322.2[Pa]}{1[cm\ Hg]} = 26664.3913[Pa] = 26.6643913[kPa] 
+$$
+
+$$
+    P_{3_{abs}} = 78.51[kPa] - 26.6643913[kPa] = 51.8456[kPa]
+$$
+
+Con estos dos datos ($s_3$,$P_{3_{abs}}$) entramos a tablas para obtener la entalpia
+
+$$
+    h_{3_{isen}} = 2294.1257 \left[\frac{kJ}{kg}\right]
+$$
+
+\subsubsection{Calculo de la entalpia real}
+
+Para obtener la entalpia real utilizamos la presion absoluta del estado 3 ya obtenida y 
+la temperatura medida a la salida de la turbina. Con
+
+$$
+    P_{3_{abs}} = 78.51[kPa] - 26.6643913[kPa] = 51.8456[kPa]
+$$
+
+$$
+    T_3 = 73[^\circ C]
+$$
+
+obtenemos una entalpia real de
+
+$$
+    h_{3_{real}} = 305.6553 \left[\frac{kJ}{kg}\right]
+$$
+
+\subsection{Obtencion de las propiedades del estado IV} \label{sec:estadoIV}
+
+A la entrada del condensador medimos la temperatura. Para calcular la entalpia utilizamos
+
+\begin{equation}
+    h = C_p\ T
+\end{equation}
+
+sustituyendo
+
+$$
+    h_4 = 4.186\left[\frac{kJ}{kg\ ^\circ C}\right] \cdot 31[^\circ C]
+    = 0.129766 \left[\frac{kJ}{kg}\right]
+$$
+
+\subsection{Obtencion de las propiedades del estado V}
+
+De la misma forma, conocemos la temperatura dentro del tanque de condensado, 
+y sustituyendo en la ecuacion anterior
+
+$$
+    h_5 = 4.186\left[\frac{kJ}{kg\ ^\circ C}\right] \cdot 36[^\circ C]
+    = 0.150696 \left[\frac{kJ}{kg}\right]
+$$
+
+\subsection{Obtencion de las eficiencias en la turbina}
+
+\subsubsection{Eficiencia interna}
+
+Para encontrar la eficiencia interna de la turbia utilizaremos las entalpias de los estados 3 real, 3 teorico y 2.
+
+Dada la ecuacion 
+
+\begin{equation}
+    \eta_{int} = \frac{h_2 - h_{3_R}}{h_2 - h_{3_T}}
+\end{equation}
+
+Sustituimos los datos de los estados ya mencionados encontrados en 
+las secciones \ref{sec:estadoII} y \ref{sec:estadoIII}.
+
+Sustituimos
+
+$$
+    \eta_{int} = \frac{2701.8194 [kJ/kg] - 305.65531 [kJ/kg]}
+    {2701.8194 [kJ/kg] - 2294.1257 [kJ/kg]} = 5.8773
+$$
+
+
+
+\subsubsection{Eficiencia mecanica}
+
+Para encontrar la eficiencia mecanica de la turbina utilizamos
+
+\begin{equation} \label{eq:efMec}
+    \eta_{mec} = \frac{VI}{G_{v_{max}}(h_2 - h_{3_R})}
+\end{equation}
+
+Para poder evaluar necesitamos obtener GvMax. 
+
+\begin{equation}
+    G_{v_{max}} = \frac{m_{con} - m_{cu}}{t}    
+\end{equation}
+
+Utilizando los datos de tablas sustituimos y evaluamos 
+
+$$
+    G_{v_{max}} = \frac{5.5[kg] - 0.3[kg]}{1[min]} \cdot \frac{60[min]}{1[h]} = 312 \left[\frac{kg}{h}\right]
+$$
+
+Con este gasto, sustituimos en la ecuacion \ref{eq:efMec} con los datos obtenidos en 
+las secciones \ref{sec:estadoII} y \ref{sec:estadoIII}.
+
+$$
+    \eta_{mec} = \frac{
+        11[V]\cdot 61.3[A]
+    }{
+        312 \left[\frac{kg}{h}\right] 
+        ( 2701.8194 \left[\frac{kJ}{kg}\right] - 305.65531 \left[\frac{kJ}{kg}\right] )
+    }
+    = 
+    0.0009
+$$
+
+\subsection{Obtencion de las eficiencias del ciclo}
+
+Para obtener la eficiencia del ciclo podemos sustituir directamente, ya que tenemos todos los datos.
+
+Para la eficiencia teorica
+
+\begin{equation}
+    \eta_{teorica} = \frac{h_2 - h_{3_T}}{h_2 - h_5} 
+\end{equation}
+
+Sustituyendo 
+
+$$
+    \eta_{teorica} = \frac{
+        2701.8194 \left[\frac{kJ}{kg}\right] - 2294.1257 \left[\frac{kJ}{kg}\right]
+    }{
+        2701.8194 \left[\frac{kJ}{kg}\right] - 0.1506 \left[\frac{kJ}{kg}\right]
+    }
+$$
+
+\begin{equation}
+    \eta_{termica} = \frac{h_2 - h_{3_R}}{h_2 - h_5} 
+\end{equation}
+
+Sustituyendo
+
+$$
+    \frac{
+        2701.8194 \left[\frac{kJ}{kg}\right] - 305.6553 \left[\frac{kJ}{kg}\right]
+    }{
+        2701.8194 \left[\frac{kJ}{kg}\right] - 0.1506 \left[\frac{kJ}{kg}\right]
+    }
+$$
+
+\section{Tabla de resultados}
+\section{Analisis de resultados}
+\section{Bibliografia}
+
+% "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=http://189.254.33.151/stn/coyoacan/Current_Monitor.htm&ved=2ahUKEwj9g9GOzfiWAxWHnCYFHfYLAX8QFnoECEAQAQ&usg=AOvVaw1rIQ2RuxiJD75yRA1eR6PM"
+
+\end{document}
