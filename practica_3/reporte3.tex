@@ -417,7 +417,7 @@ $$
 La congruencia entre procesos termodinámicos es débil y es la principal razón por la que
 los resultados carecen de coherencia. En las entalpías calculadas para el ciclo III, difieren 
 exageradamente entre parte teórica y parte real. No se puede interpretar mucho a partir de los cálculos
-debido a esto. Como ejemplo, la eficiencia interna de la turbina arriba del 500\% es
+debido a esto. Como ejemplo, la eficiencia interna de la turbina arriba del $500\%$ es
 un claro error en cuanto a capacidades del ciclo y termodinámicas. \linebreak
 
 El cálculo de la eficiencia teórica del ciclo establece otro límite físico que claramente se rebasó
@@ -428,22 +428,18 @@ en otras métricas sabotea su fidelidad.
 
 Los resultados obtenidos no permiten validar el modelo termodinámico del ciclo Rankine
 debido a inconsistencias graves en las entalpías del estado III. La eficiencia interna de la
-turbina resultó ser mayor al 100\%, lo cual viola la segunda ley de la termodinámica y evidencia
+turbina resultó ser mayor al $100\%$, lo cual viola la segunda ley de la termodinámica y evidencia
 un error en la determinación de la entalpía real. La causa más probable es que la temperatura
-medida a la salida de la turbina ($73^\circ C$) es menor que la temperatura de saturación
-correspondiente a la presión absoluta del estado III ($51.85\ kPa \Rightarrow T_{sat} \approx 82.5^\circ C$),
-lo que indica que el fluido se encuentra en fase líquida y no como vapor, invalidando el uso
-de ese valor como entalpía de salida de la turbina. \linebreak
+medida a la salida de la turbina $73^\circ C$ es menor que la temperatura de saturación
+correspondiente a la presión absoluta del estado III.\linebreak
 
-Las eficiencias mecánica y total del ciclo resultaron extremadamente bajas ($0.09\%$ y $0.52\%$
-respectivamente), lo cual es consecuencia directa del error en $h_{3_R}$ y no de un
-comportamiento real del equipo. La eficiencia teórica del ciclo ($15.09\%$) se encuentra dentro
-de un rango plausible para un ciclo Rankine simple, pero la eficiencia térmica ($88.69\%$)
+Las eficiencias mecánica y total del ciclo resultaron extremadamente bajas $0.09\%$ y $0.52\%$
+respectivamente, lo cual es consecuencia directa del error en $h_{3_R}$ y no de un
+comportamiento real del equipo. La eficiencia teórica del ciclo $15.09\%$ es correcta, 
+pero la eficiencia térmica $88.69\%$
 la supera, lo cual es físicamente imposible. \linebreak
 
-Se concluye que la práctica requiere una revisión cuidadosa de la instrumentación utilizada
-para medir la temperatura y presión a la salida de la turbina, así como una verificación de
-las condiciones de operación del equipo.
+Deberian .
 
 \section{Bibliografía}
 
@@ -451,6 +447,18 @@ las condiciones de operación del equipo.
     \item Monitoreo meteorológico de Coyoacán. (2026). Estación de monitoreo ambiental.
     Recuperado el 24 de septiembre de 2026, de 
     \url{http://189.254.33.151/stn/coyoacan/Current_Monitor.htm}
+
+    \item Bell, I. H., Wronski, J., Quoilin, S., \& Lemort, V. (2014). 
+    Pure and pseudo-pure fluid thermophysical property evaluation and 
+    the open-source thermophysical property library CoolProp. 
+    \textit{Industrial \& Engineering Chemistry Research}, 53(6), 
+    2498--2508. \url{https://doi.org/10.1021/ie4033999}
+
+    \item López Maldonado, S. (2026). \textit{Hoja de Ciclo Rankine} [Material de curso]. 
+    Facultad de Ingeniería, Universidad Nacional Autónoma de México.
+    
+    \item Python Software Foundation. (2024). \textit{Python Language 
+    Reference, version 3.12}. \url{https://docs.python.org/3/}
 \end{itemize}
 
 \end{document}
