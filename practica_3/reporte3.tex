@@ -120,7 +120,7 @@ para medir la calidad del vapor a la salida de la caldera.
     \hline
     \textbf{Medición} & \textbf{Variable} \\
     \hline
-    $11.0\ [V]$  & $V$ \\
+    $110\ [V]$  & $V$ \\
     \hline
     $61.3\ [A]$  & $A$ \\
     \hline
@@ -318,7 +318,7 @@ Para poder evaluar necesitamos obtener GvMax.
 Utilizando los datos de tablas sustituimos y evaluamos 
 
 $$
-    G_{v_{max}} = \frac{5.5[kg] - 0.3[kg]}{1[min]} \cdot \frac{60[min]}{1[h]} = 312 \left[\frac{kg}{h}\right]
+    G_{v_{max}} = \frac{5.5[kg] - 0.3[kg]}{1[min]} \cdot \frac{1[min]}{60[s]} = 0.08666 \left[\frac{kg}{s}\right]
 $$
 
 Con este gasto, sustituimos en la ecuación \ref{eq:efMec} con los datos obtenidos en 
@@ -326,13 +326,13 @@ las secciones \ref{sec:estadoII} y \ref{sec:estadoIII}.
 
 $$
     \eta_{mec} = \frac{
-        11[V]\cdot 61.3[A]
+        110[V]\cdot 61.3[A]
     }{
-        312 \left[\frac{kg}{h}\right] 
+        0.08666 \left[\frac{kg}{s}\right] 
         ( 2701.8194 \left[\frac{kJ}{kg}\right] - 305.65531 \left[\frac{kJ}{kg}\right] )
     }
     = 
-    0.0009
+    32.470
 $$
 
 \subsection{Obtención de las eficiencias del ciclo}
@@ -386,7 +386,7 @@ Finalmente, para obtener la eficiencia total del ciclo multiplicamos
 Sustituyendo y evaluando
 
 $$
-    \eta_{total} = 5.8773 \cdot 0.0009 = 0.0052
+    \eta_{total} = 5.8773 \cdot 32.470 = 190.837
 $$
 
 \section{Tabla de resultados}
