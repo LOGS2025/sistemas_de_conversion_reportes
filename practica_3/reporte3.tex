@@ -324,15 +324,17 @@ $$
 Con este gasto, sustituimos en la ecuación \ref{eq:efMec} con los datos obtenidos en 
 las secciones \ref{sec:estadoII} y \ref{sec:estadoIII}.
 
+% Pero VI da Joules/segundo
+
 $$
     \eta_{mec} = \frac{
         110[V]\cdot 61.3[A]
     }{
-        0.08666 \left[\frac{kg}{s}\right] 
+        0.08666 \left[\frac{kg}{s}\right] \frac{1[kJ]}{1000[J]}
         ( 2701.8194 \left[\frac{kJ}{kg}\right] - 305.65531 \left[\frac{kJ}{kg}\right] )
     }
     = 
-    32.470
+    0.032470
 $$
 
 \subsection{Obtención de las eficiencias del ciclo}
@@ -386,7 +388,7 @@ Finalmente, para obtener la eficiencia total del ciclo multiplicamos
 Sustituyendo y evaluando
 
 $$
-    \eta_{total} = 5.8773 \cdot 32.470 = 190.837
+    \eta_{total} = 5.8773 \cdot 0.032470 = 0.19083
 $$
 
 \section{Tabla de resultados}
@@ -400,13 +402,13 @@ $$
     \hline
     Eficiencia interna de la turbina    & $5.8773$  & $587.73\%$ \\
     \hline
-    Eficiencia mecánica de la turbina   & $0.0009$  & $0.09\%$ \\
+    Eficiencia mecánica de la turbina   & $0.0324$  & $3.24\%$ \\
     \hline
     Eficiencia teórica del ciclo        & $0.1509$  & $15.09\%$ \\
     \hline
     Eficiencia térmica del ciclo        & $0.8869$  & $88.69\%$ \\
     \hline
-    Eficiencia total del ciclo        & $0.0052$  & $0.52\%$ \\
+    Eficiencia total del ciclo        & $0.19083$  & $19.083\%$ \\
     \hline
     \end{tabular}
 \caption{Variables finales.}
@@ -433,13 +435,11 @@ un error en la determinación de la entalpía real. La causa más probable es qu
 medida a la salida de la turbina $73^\circ C$ es menor que la temperatura de saturación
 correspondiente a la presión absoluta del estado III.\linebreak
 
-Las eficiencias mecánica y total del ciclo resultaron extremadamente bajas $0.09\%$ y $0.52\%$
-respectivamente, lo cual es consecuencia directa del error en $h_{3_R}$ y no de un
-comportamiento real del equipo. La eficiencia teórica del ciclo $15.09\%$ es correcta, 
-pero la eficiencia térmica $88.69\%$
-la supera, lo cual es físicamente imposible. \linebreak
+La eficiencia mecánica resulta extremadamente baja $3.24\%$, lo cual es consecuencia directa del error en $h_{3_R}$ y no de un
+comportamiento real del equipo. La eficiencia teórica del ciclo $15.09\%$ es correcta,
+pero la eficiencia térmica $88.69\%$ la supera, lo cual es físicamente imposible. 
+Además, la eficiencia total del ciclo supera a la eficiencia termica del ciclo, lo cual es imposible.\linebreak
 
-Deberian .
 
 \section{Bibliografía}
 
