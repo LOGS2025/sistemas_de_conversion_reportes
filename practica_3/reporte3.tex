@@ -63,18 +63,18 @@
 
 \section{Objetivos}
 
-Obtener numericamente a partir de mediciones realizadas a un generador
-de ciclo rankine en operacion las eficiencias interna, mecanica y total de la turbina, y las
-eficiencias teorica y termica del ciclo completo. Esto utilizando los datos ya calculados 
+Obtener numéricamente, a partir de mediciones realizadas a un generador
+de ciclo rankine en operación, las eficiencias interna, mecánica y total de la turbina, y las
+eficiencias teórica y térmica del ciclo completo. Esto utilizando los datos ya calculados 
 para medir la calidad del vapor a la salida de la caldera.
 
 \section{Materiales}
 
 \begin{itemize}
-    \item 1 Termometro 150 $^\circ C$
-    \item 1 Termometro 100 $^\circ C$
-    \item 1 Tacometro
-    \item 1 Cronometro
+    \item 1 Termómetro 150 $^\circ C$
+    \item 1 Termómetro 100 $^\circ C$
+    \item 1 Tacómetro
+    \item 1 Cronómetro
     \item 3 Cubetas
 \end{itemize}
 
@@ -82,32 +82,32 @@ para medir la calidad del vapor a la salida de la caldera.
 
 \begin{enumerate}
     % Etapa: 
-    \item Identificar manometros y pozos para termometros
+    \item Se identificaron manómetros y pozos para termómetros.
     % Etapa: 
-    \item Identificar medidor de corriente y voltaje
-    \item Primero se dejo pasar vapor hacia la turbina y se fue calibrando con el reostato
-    \item Al llegar aproximadamente a los 120 volts, se tomo la medida de la corriente y del voltaje
-    \item Al mismo tiempo, se recolecto el agua que salia del pozo para evitar que se tirara
-    \item Se dejo llenar una cubeta durante 1 minuto. Se peso y luego se vacio para 
+    \item Se identificó el medidor de corriente, voltaje y reóstato.
+    \item Primero se dejó pasar vapor hacia la turbina y se fue calibrando con el reóstato.
+    \item Al llegar aproximadamente a los 120 volts, se tomó la medida de la corriente y del voltaje.
+    \item Al mismo tiempo, se recolectó el agua a la salida del condensador para evitar que se tirara.
+    \item Se dejó llenar una cubeta durante 1 minuto. Se pesó y luego se vació para 
     obtener el peso del condensado. 
 
 % Presiones
 
     % Etapa: 1 -> Entrada a la valvula | Salida del tanque de condensado (cabezal)
-    \item Se tomo la lectura del manometro de la valvula 
+    \item Se tomó la lectura del manómetro de la válvula.
     % Etapa: 2 -> Entrada a la turbina
-    \item Se tomo la lectura del manometro a la entrada de la turbina
+    \item Se tomó la lectura del manómetro a la entrada de la turbina.
     % Etapa: 3 -> Salida de la turbina
-    \item Se tomo la lectura del manometro a la salida de la turbina
+    \item Se tomó la lectura del manómetro a la salida de la turbina.
 
 % Temperaturas
 
     % Etapa: 3 -> Salida de la turbina
-    \item Se tomo la lectura del termometro a la salida de la turbina
+    \item Se tomó la lectura del termómetro a la salida de la turbina.
     % Etapa: 4 -> Salida del condensado
-    \item Se tomo la lectura del termometro a la salida del condensador
+    \item Se tomó la lectura del termómetro a la salida del condensador.
     % Etapa: 5 -> Temperatura del tanque del condensado
-    \item Se tomo la lectura del termometro dentro del tanque de condensado
+    \item Se tomó la lectura del termómetro dentro del tanque de condensado.
 
 \end{enumerate}
 
@@ -150,19 +150,19 @@ para medir la calidad del vapor a la salida de la caldera.
 
 \section{Cálculos}
 
-A continuacion se muestran los calculos realizados para obtener las metricas propuestas en
+A continuación se muestran los cálculos realizados para obtener las métricas propuestas en
 los objetivos.
 
 Los valores encontrados en tablas se obtuvieron a partir de un script en python con
-ayuda de la paqueteria CoolProp. Esto favorece la precision y rapidez para obtener dichos datos.
+ayuda de la paquetería CoolProp. Esto favorece la precisión y rapidez para obtener dichos datos.
 
-\subsection{Obtencion de las propiedades del estado I} \label{sec:estadoI}
+\subsection{Obtención de las propiedades del estado I} \label{sec:estadoI}
 
-Establecemos a la presion atmosferica con un valor de 
+Establecemos a la presión atmosférica con un valor de 
 $78.51[kPa]$. Y utilizando los valos pertenecientes al estado 1 de la tabla de datos,
-obtenemos la presion absoluta.
+obtenemos la presión absoluta.
 
-Realizando la conversion a $[Pa]$
+Realizando la conversión a $[Pa]$
 
 $$P_1 = 6.5\left[\frac{kg}{cm^2}\right] 
 \cdot 
@@ -173,53 +173,53 @@ $$P_{1_{abs}} = 637.43225[kPa] + 78.51[kPa] = 715.94225[kPa]$$
 
 Y para entrar a tablas, tenemos el dato de la calidad del vapor a la salida de la caldera ($x=0.97$).
 
-La entalpia del estado 1 es
+La entalpía del estado 1 es
 $$
     h_1 =  2701.8194 \left[\frac{kJ}{kg}\right]
 $$
 
-\subsection{Obtencion de las propiedades del estado II} \label{sec:estadoII}
+\subsection{Obtención de las propiedades del estado II} \label{sec:estadoII}
 
-Despues de que el vapor sale de la caldera, y pasa por el cabezal, llega a la valvula "de paso?".
+Después de que el vapor sale de la caldera, y pasa por el cabezal, llega a la válvula "de paso?".
 
-Al ser un proceso isentalpico, le asignamos la misma entalpia que a nuestro estado 1.
+Al ser un proceso isentálpico, le asignamos la misma entalpía que a nuestro estado 1.
 
 $$
     h_2 =  2701.8194 \left[\frac{kJ}{kg}\right]
 $$
 
-Para el siguiente estado necesitamos de la entropia. Para poder obtener este valor de tablas, 
-convertimos la presion del estado 2 a $[kPa]$.
+Para el siguiente estado necesitamos de la entropía. Para poder obtener este valor de tablas, 
+convertimos la presión del estado 2 a $[kPa]$.
 
 $$P_2 = 6\left[\frac{kg}{cm^2}\right] 
 \cdot 
 \frac{98066.5[Pa]}{1\left[\frac{kg}{cm^2}\right]}=588399.0[Pa]=588.399[kPa]
 $$
 
-Obtenemos la presion absoluta
+Obtenemos la presión absoluta
 
 $$P_{2_{abs}} = 588.399[kPa] + 78.51[kPa] = 666.909[kPa]$$
 
-y entrando a tablas con los valores de entalpia y presion obtenemos
+y entrando a tablas con los valores de entalpía y presión obtenemos
 
 $$
     s_2 = 6.58849418722697  \left[\frac{kJ}{kg\ K}\right]
 $$
 
-\subsection{Obtencion de las propiedades del estado III} \label{sec:estadoIII}
+\subsection{Obtención de las propiedades del estado III} \label{sec:estadoIII}
 
-Sabemos que el proceso termodinamico que ocurre en la turbina es isentropico idealmente.
-Para este primer calculo de $h_{3_{isen}}$, 
+Sabemos que el proceso termodinámico que ocurre en la turbina es isentrópico idealmente.
+Para este primer cálculo de $h_{3_{isen}}$, 
 
-\subsubsection{Calculo de la entalpia teorica}
+\subsubsection{Cálculo de la entalpía teórica}
 
-Igualamos entropias
+Igualamos entropías
 
 $$
     s_3 = s_2
 $$
 
-y convertimos el dato de presion vacuometrica del estado 3 a presion absoluta
+y convertimos el dato de presión vacuométrica del estado 3 a presión absoluta
 
 $$
     P_3 = 20[cm\ Hg] \cdot \frac{1322.2[Pa]}{1[cm\ Hg]} = 26664.3913[Pa] = 26.6643913[kPa] 
@@ -229,15 +229,15 @@ $$
     P_{3_{abs}} = 78.51[kPa] - 26.6643913[kPa] = 51.8456[kPa]
 $$
 
-Con estos dos datos ($s_3$,$P_{3_{abs}}$) entramos a tablas para obtener la entalpia
+Con estos dos datos ($s_3$,$P_{3_{abs}}$) entramos a tablas para obtener la entalpía
 
 $$
     h_{3_{isen}} = 2294.1257 \left[\frac{kJ}{kg}\right]
 $$
 
-\subsubsection{Calculo de la entalpia real}
+\subsubsection{Cálculo de la entalpía real}
 
-Para obtener la entalpia real utilizamos la presion absoluta del estado 3 ya obtenida y 
+Para obtener la entalpía real utilizamos la presión absoluta del estado 3 ya obtenida y 
 la temperatura medida a la salida de la turbina. Con
 
 $$
@@ -248,15 +248,15 @@ $$
     T_3 = 73[^\circ C]
 $$
 
-obtenemos una entalpia real de
+obtenemos una entalpía real de
 
 $$
     h_{3_{real}} = 305.6553 \left[\frac{kJ}{kg}\right]
 $$
 
-\subsection{Obtencion de las propiedades del estado IV} \label{sec:estadoIV}
+\subsection{Obtención de las propiedades del estado IV} \label{sec:estadoIV}
 
-A la entrada del condensador medimos la temperatura. Para calcular la entalpia utilizamos
+A la entrada del condensador medimos la temperatura. Para calcular la entalpía utilizamos
 
 \begin{equation}
     h = C_p\ T
@@ -269,23 +269,23 @@ $$
     = 0.129766 \left[\frac{kJ}{kg}\right]
 $$
 
-\subsection{Obtencion de las propiedades del estado V}
+\subsection{Obtención de las propiedades del estado V}
 
 De la misma forma, conocemos la temperatura dentro del tanque de condensado, 
-y sustituyendo en la ecuacion anterior
+y sustituyendo en la ecuación anterior
 
 $$
     h_5 = 4.186\left[\frac{kJ}{kg\ ^\circ C}\right] \cdot 36[^\circ C]
     = 0.150696 \left[\frac{kJ}{kg}\right]
 $$
 
-\subsection{Obtencion de las eficiencias en la turbina}
+\subsection{Obtención de las eficiencias en la turbina}
 
 \subsubsection{Eficiencia interna}
 
-Para encontrar la eficiencia interna de la turbia utilizaremos las entalpias de los estados 3 real, 3 teorico y 2.
+Para encontrar la eficiencia interna de la turbia utilizaremos las entalpías de los estados 3 real, 3 teórico y 2.
 
-Dada la ecuacion 
+Dada la ecuación 
 
 \begin{equation}
     \eta_{int} = \frac{h_2 - h_{3_R}}{h_2 - h_{3_T}}
@@ -301,11 +301,9 @@ $$
     {2701.8194 [kJ/kg] - 2294.1257 [kJ/kg]} = 5.8773
 $$
 
+\subsubsection{Eficiencia mecánica}
 
-
-\subsubsection{Eficiencia mecanica}
-
-Para encontrar la eficiencia mecanica de la turbina utilizamos
+Para encontrar la eficiencia mecánica de la turbina utilizamos
 
 \begin{equation} \label{eq:efMec}
     \eta_{mec} = \frac{VI}{G_{v_{max}}(h_2 - h_{3_R})}
@@ -323,7 +321,7 @@ $$
     G_{v_{max}} = \frac{5.5[kg] - 0.3[kg]}{1[min]} \cdot \frac{60[min]}{1[h]} = 312 \left[\frac{kg}{h}\right]
 $$
 
-Con este gasto, sustituimos en la ecuacion \ref{eq:efMec} con los datos obtenidos en 
+Con este gasto, sustituimos en la ecuación \ref{eq:efMec} con los datos obtenidos en 
 las secciones \ref{sec:estadoII} y \ref{sec:estadoIII}.
 
 $$
@@ -337,11 +335,11 @@ $$
     0.0009
 $$
 
-\subsection{Obtencion de las eficiencias del ciclo}
+\subsection{Obtención de las eficiencias del ciclo}
 
 Para obtener la eficiencia del ciclo podemos sustituir directamente, ya que tenemos todos los datos.
 
-Para la eficiencia teorica
+Para la eficiencia teórica
 
 \begin{equation}
     \eta_{teorica} = \frac{h_2 - h_{3_T}}{h_2 - h_5} 
@@ -354,8 +352,12 @@ $$
         2701.8194 \left[\frac{kJ}{kg}\right] - 2294.1257 \left[\frac{kJ}{kg}\right]
     }{
         2701.8194 \left[\frac{kJ}{kg}\right] - 0.1506 \left[\frac{kJ}{kg}\right]
-    }
+    } 
+    = 
+    0.1509
 $$
+
+Para la eficiencia térmica
 
 \begin{equation}
     \eta_{termica} = \frac{h_2 - h_{3_R}}{h_2 - h_5} 
@@ -369,12 +371,86 @@ $$
     }{
         2701.8194 \left[\frac{kJ}{kg}\right] - 0.1506 \left[\frac{kJ}{kg}\right]
     }
+    = 
+    0.8869
+$$
+
+\subsubsection{Eficiencia total del ciclo}
+
+Finalmente, para obtener la eficiencia total del ciclo multiplicamos
+
+\begin{equation}
+    \eta_{total} = \eta_{int} \cdot \eta_{mec}
+\end{equation}
+
+Sustituyendo y evaluando
+
+$$
+    \eta_{total} = 5.8773 \cdot 0.0009 = 0.0052
 $$
 
 \section{Tabla de resultados}
-\section{Analisis de resultados}
-\section{Bibliografia}
 
-% "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=http://189.254.33.151/stn/coyoacan/Current_Monitor.htm&ved=2ahUKEwj9g9GOzfiWAxWHnCYFHfYLAX8QFnoECEAQAQ&usg=AOvVaw1rIQ2RuxiJD75yRA1eR6PM"
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.4}
+    \begin{tabular}{|l|l|l|}
+    \hline
+    \textbf{Variable} & \textbf{Resultado} & \textbf{Porcentaje} \\
+    \hline
+    Eficiencia interna de la turbina    & $5.8773$  & $587.73\%$ \\
+    \hline
+    Eficiencia mecánica de la turbina   & $0.0009$  & $0.09\%$ \\
+    \hline
+    Eficiencia teórica del ciclo        & $0.1509$  & $15.09\%$ \\
+    \hline
+    Eficiencia térmica del ciclo        & $0.8869$  & $88.69\%$ \\
+    \hline
+    Eficiencia total del ciclo        & $0.0052$  & $0.52\%$ \\
+    \hline
+    \end{tabular}
+\caption{Variables finales.}
+\end{table}
+
+\section{Análisis de resultados}
+
+La congruencia entre procesos termodinámicos es débil y es la principal razón por la que
+los resultados carecen de coherencia. En las entalpías calculadas para el ciclo III, difieren 
+exageradamente entre parte teórica y parte real. No se puede interpretar mucho a partir de los cálculos
+debido a esto. Como ejemplo, la eficiencia interna de la turbina arriba del 500\% es
+un claro error en cuanto a capacidades del ciclo y termodinámicas. \linebreak
+
+El cálculo de la eficiencia teórica del ciclo establece otro límite físico que claramente se rebasó
+cuando se calculó la eficiencia térmica con la entalpía III real. Además, el repetido uso de esta 
+en otras métricas sabotea su fidelidad.
+
+\section{Conclusiones}
+
+Los resultados obtenidos no permiten validar el modelo termodinámico del ciclo Rankine
+debido a inconsistencias graves en las entalpías del estado III. La eficiencia interna de la
+turbina resultó ser mayor al 100\%, lo cual viola la segunda ley de la termodinámica y evidencia
+un error en la determinación de la entalpía real. La causa más probable es que la temperatura
+medida a la salida de la turbina ($73^\circ C$) es menor que la temperatura de saturación
+correspondiente a la presión absoluta del estado III ($51.85\ kPa \Rightarrow T_{sat} \approx 82.5^\circ C$),
+lo que indica que el fluido se encuentra en fase líquida y no como vapor, invalidando el uso
+de ese valor como entalpía de salida de la turbina. \linebreak
+
+Las eficiencias mecánica y total del ciclo resultaron extremadamente bajas ($0.09\%$ y $0.52\%$
+respectivamente), lo cual es consecuencia directa del error en $h_{3_R}$ y no de un
+comportamiento real del equipo. La eficiencia teórica del ciclo ($15.09\%$) se encuentra dentro
+de un rango plausible para un ciclo Rankine simple, pero la eficiencia térmica ($88.69\%$)
+la supera, lo cual es físicamente imposible. \linebreak
+
+Se concluye que la práctica requiere una revisión cuidadosa de la instrumentación utilizada
+para medir la temperatura y presión a la salida de la turbina, así como una verificación de
+las condiciones de operación del equipo.
+
+\section{Bibliografía}
+
+\begin{itemize}
+    \item Monitoreo meteorológico de Coyoacán. (2026). Estación de monitoreo ambiental.
+    Recuperado el 24 de septiembre de 2026, de 
+    \url{http://189.254.33.151/stn/coyoacan/Current_Monitor.htm}
+\end{itemize}
 
 \end{document}
